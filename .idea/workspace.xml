@@ -113,8 +113,8 @@
       <file leaf-file-name="dish.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/router/dish.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="509" column="6" lean-forward="false" selection-start-line="509" selection-start-column="6" selection-end-line="509" selection-end-column="6" />
+            <state relative-caret-position="264">
+              <caret line="532" column="3" lean-forward="true" selection-start-line="532" selection-start-column="3" selection-end-line="532" selection-end-column="3" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
                 <element signature="e#689#2701#0" expanded="false" />
@@ -138,10 +138,10 @@
                 <element signature="e#17006#17934#0" expanded="false" />
                 <element signature="n#!!block;n#reptileMeals#0" expanded="false" />
                 <element signature="n#!!block;n#reptileDayDish#0" expanded="false" />
-                <element signature="e#27373#28096#0" expanded="false" />
-                <element signature="e#28408#29892#0" expanded="false" />
+                <element signature="e#27404#28127#0" expanded="false" />
+                <element signature="e#28439#29923#0" expanded="false" />
                 <element signature="n#!!block;n#addView#0" expanded="false" />
-                <element signature="e#30272#30885#0" expanded="false" />
+                <element signature="e#30303#30916#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -186,8 +186,8 @@
       <file leaf-file-name="ingredients.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/router/ingredients.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1749">
-              <caret line="167" column="13" lean-forward="false" selection-start-line="167" selection-start-column="13" selection-end-line="167" selection-end-column="24" />
+            <state relative-caret-position="2145">
+              <caret line="146" column="32" lean-forward="true" selection-start-line="146" selection-start-column="32" selection-end-line="146" selection-end-column="32" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
                 <element signature="e#582#943#0" expanded="false" />
@@ -195,8 +195,7 @@
                 <element signature="e#1384#1998#0" expanded="false" />
                 <element signature="e#2057#2896#0" expanded="false" />
                 <element signature="e#2959#3818#0" expanded="false" />
-                <element signature="e#3880#5134#0" expanded="false" />
-                <element signature="e#5200#5686#0" expanded="false" />
+                <element signature="e#5294#5780#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -242,6 +241,9 @@
       <replace>router</replace>
     </replaceStrings>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/menuNodeJS" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -250,12 +252,12 @@
         <option value="$PROJECT_DIR$/upload.html" />
         <option value="$PROJECT_DIR$/libs/reptile.js" />
         <option value="$PROJECT_DIR$/libs/common.js" />
-        <option value="$PROJECT_DIR$/router/ingredients.js" />
         <option value="$PROJECT_DIR$/router/user.js" />
         <option value="$PROJECT_DIR$/router/operate.js" />
         <option value="$PROJECT_DIR$/router/fileOperate.js" />
         <option value="$PROJECT_DIR$/xx.js" />
         <option value="$PROJECT_DIR$/index.js" />
+        <option value="$PROJECT_DIR$/router/ingredients.js" />
         <option value="$PROJECT_DIR$/router/dish.js" />
       </list>
     </option>
@@ -281,6 +283,7 @@
     <option name="width" value="1938" />
     <option name="height" value="1048" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -296,7 +299,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -353,6 +355,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -532,12 +535,17 @@
       <workItem from="1544666740249" duration="794000" />
       <workItem from="1544756919000" duration="9385000" />
       <workItem from="1544832801964" duration="4028000" />
-      <workItem from="1544924286021" duration="238000" />
+      <workItem from="1544924286021" duration="858000" />
+      <workItem from="1545026693399" duration="804000" />
+      <workItem from="1545046635287" duration="1650000" />
+      <workItem from="1545111595105" duration="603000" />
+      <workItem from="1545133993869" duration="121000" />
+      <workItem from="1545143306558" duration="941000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="307746000" />
+    <option name="totallyTimeSpent" value="312485000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -554,10 +562,10 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16807611" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291714" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22247446" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22272727" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -629,10 +637,10 @@
             <element signature="e#17006#17934#0" expanded="false" />
             <element signature="n#!!block;n#reptileMeals#0" expanded="false" />
             <element signature="n#!!block;n#reptileDayDish#0" expanded="false" />
-            <element signature="e#27373#28096#0" expanded="false" />
-            <element signature="e#28408#29892#0" expanded="false" />
+            <element signature="e#27404#28127#0" expanded="false" />
+            <element signature="e#28439#29923#0" expanded="false" />
             <element signature="n#!!block;n#addView#0" expanded="false" />
-            <element signature="e#30272#30885#0" expanded="false" />
+            <element signature="e#30303#30916#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -648,8 +656,7 @@
             <element signature="e#1384#1998#0" expanded="false" />
             <element signature="e#2057#2896#0" expanded="false" />
             <element signature="e#2959#3818#0" expanded="false" />
-            <element signature="e#3880#5134#0" expanded="false" />
-            <element signature="e#5200#5686#0" expanded="false" />
+            <element signature="e#5294#5780#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -717,10 +724,10 @@
             <element signature="e#17006#17934#0" expanded="false" />
             <element signature="n#!!block;n#reptileMeals#0" expanded="false" />
             <element signature="n#!!block;n#reptileDayDish#0" expanded="false" />
-            <element signature="e#27373#28096#0" expanded="false" />
-            <element signature="e#28408#29892#0" expanded="false" />
+            <element signature="e#27404#28127#0" expanded="false" />
+            <element signature="e#28439#29923#0" expanded="false" />
             <element signature="n#!!block;n#addView#0" expanded="false" />
-            <element signature="e#30272#30885#0" expanded="false" />
+            <element signature="e#30303#30916#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -744,8 +751,7 @@
             <element signature="e#1384#1998#0" expanded="false" />
             <element signature="e#2057#2896#0" expanded="false" />
             <element signature="e#2959#3818#0" expanded="false" />
-            <element signature="e#3880#5134#0" expanded="false" />
-            <element signature="e#5200#5686#0" expanded="false" />
+            <element signature="e#5294#5780#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -813,10 +819,10 @@
             <element signature="e#17006#17934#0" expanded="false" />
             <element signature="n#!!block;n#reptileMeals#0" expanded="false" />
             <element signature="n#!!block;n#reptileDayDish#0" expanded="false" />
-            <element signature="e#27373#28096#0" expanded="false" />
-            <element signature="e#28408#29892#0" expanded="false" />
+            <element signature="e#27404#28127#0" expanded="false" />
+            <element signature="e#28439#29923#0" expanded="false" />
             <element signature="n#!!block;n#addView#0" expanded="false" />
-            <element signature="e#30272#30885#0" expanded="false" />
+            <element signature="e#30303#30916#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -876,10 +882,10 @@
             <element signature="e#17006#17934#0" expanded="false" />
             <element signature="n#!!block;n#reptileMeals#0" expanded="false" />
             <element signature="n#!!block;n#reptileDayDish#0" expanded="false" />
-            <element signature="e#27373#28096#0" expanded="false" />
-            <element signature="e#28408#29892#0" expanded="false" />
+            <element signature="e#27404#28127#0" expanded="false" />
+            <element signature="e#28439#29923#0" expanded="false" />
             <element signature="n#!!block;n#addView#0" expanded="false" />
-            <element signature="e#30272#30885#0" expanded="false" />
+            <element signature="e#30303#30916#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -939,10 +945,10 @@
             <element signature="e#17006#17934#0" expanded="false" />
             <element signature="n#!!block;n#reptileMeals#0" expanded="false" />
             <element signature="n#!!block;n#reptileDayDish#0" expanded="false" />
-            <element signature="e#27373#28096#0" expanded="false" />
-            <element signature="e#28408#29892#0" expanded="false" />
+            <element signature="e#27404#28127#0" expanded="false" />
+            <element signature="e#28439#29923#0" expanded="false" />
             <element signature="n#!!block;n#addView#0" expanded="false" />
-            <element signature="e#30272#30885#0" expanded="false" />
+            <element signature="e#30303#30916#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1018,10 +1024,10 @@
             <element signature="e#17006#17934#0" expanded="false" />
             <element signature="n#!!block;n#reptileMeals#0" expanded="false" />
             <element signature="n#!!block;n#reptileDayDish#0" expanded="false" />
-            <element signature="e#27373#28096#0" expanded="false" />
-            <element signature="e#28408#29892#0" expanded="false" />
+            <element signature="e#27404#28127#0" expanded="false" />
+            <element signature="e#28439#29923#0" expanded="false" />
             <element signature="n#!!block;n#addView#0" expanded="false" />
-            <element signature="e#30272#30885#0" expanded="false" />
+            <element signature="e#30303#30916#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1089,10 +1095,10 @@
             <element signature="e#17006#17934#0" expanded="false" />
             <element signature="n#!!block;n#reptileMeals#0" expanded="false" />
             <element signature="n#!!block;n#reptileDayDish#0" expanded="false" />
-            <element signature="e#27373#28096#0" expanded="false" />
-            <element signature="e#28408#29892#0" expanded="false" />
+            <element signature="e#27404#28127#0" expanded="false" />
+            <element signature="e#28439#29923#0" expanded="false" />
             <element signature="n#!!block;n#addView#0" expanded="false" />
-            <element signature="e#30272#30885#0" expanded="false" />
+            <element signature="e#30303#30916#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1160,10 +1166,10 @@
             <element signature="e#17006#17934#0" expanded="false" />
             <element signature="n#!!block;n#reptileMeals#0" expanded="false" />
             <element signature="n#!!block;n#reptileDayDish#0" expanded="false" />
-            <element signature="e#27373#28096#0" expanded="false" />
-            <element signature="e#28408#29892#0" expanded="false" />
+            <element signature="e#27404#28127#0" expanded="false" />
+            <element signature="e#28439#29923#0" expanded="false" />
             <element signature="n#!!block;n#addView#0" expanded="false" />
-            <element signature="e#30272#30885#0" expanded="false" />
+            <element signature="e#30303#30916#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1258,23 +1264,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="33">
           <caret line="1577" column="4" lean-forward="false" selection-start-line="1577" selection-start-column="4" selection-end-line="1577" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/router/ingredients.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1749">
-          <caret line="167" column="13" lean-forward="false" selection-start-line="167" selection-start-column="13" selection-end-line="167" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-            <element signature="e#582#943#0" expanded="false" />
-            <element signature="e#997#1326#0" expanded="false" />
-            <element signature="e#1384#1998#0" expanded="false" />
-            <element signature="e#2057#2896#0" expanded="false" />
-            <element signature="e#2959#3818#0" expanded="false" />
-            <element signature="e#3880#5134#0" expanded="false" />
-            <element signature="e#5200#5686#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1381,6 +1370,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/router/ingredients.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2145">
+          <caret line="146" column="32" lean-forward="true" selection-start-line="146" selection-start-column="32" selection-end-line="146" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+            <element signature="e#582#943#0" expanded="false" />
+            <element signature="e#997#1326#0" expanded="false" />
+            <element signature="e#1384#1998#0" expanded="false" />
+            <element signature="e#2057#2896#0" expanded="false" />
+            <element signature="e#2959#3818#0" expanded="false" />
+            <element signature="e#5294#5780#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2244">
@@ -1391,8 +1396,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/router/dish.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="509" column="6" lean-forward="false" selection-start-line="509" selection-start-column="6" selection-end-line="509" selection-end-column="6" />
+        <state relative-caret-position="264">
+          <caret line="532" column="3" lean-forward="true" selection-start-line="532" selection-start-column="3" selection-end-line="532" selection-end-column="3" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
             <element signature="e#689#2701#0" expanded="false" />
@@ -1416,10 +1421,10 @@
             <element signature="e#17006#17934#0" expanded="false" />
             <element signature="n#!!block;n#reptileMeals#0" expanded="false" />
             <element signature="n#!!block;n#reptileDayDish#0" expanded="false" />
-            <element signature="e#27373#28096#0" expanded="false" />
-            <element signature="e#28408#29892#0" expanded="false" />
+            <element signature="e#27404#28127#0" expanded="false" />
+            <element signature="e#28439#29923#0" expanded="false" />
             <element signature="n#!!block;n#addView#0" expanded="false" />
-            <element signature="e#30272#30885#0" expanded="false" />
+            <element signature="e#30303#30916#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -130,6 +130,8 @@ router.get('/subcate_ingred',(req,res)=>{
 router.post('/ingred2dish',(req,res)=>{
     let postData=req.body;
     let shicai=postData.shicai;
+    let limit=postData.limit||0;
+    let offset=postData.offset||20;
     if (shicai && shicai.indexOf('[')!=-1 && shicai.indexOf(']')!=-1){
         shicai=shicai.substring(shicai.indexOf('[')+1,shicai.indexOf(']'));
         shicai=shicai.replace(/'/g,"");//清除掉所有的字符串里面的引号
@@ -147,7 +149,7 @@ router.post('/ingred2dish',(req,res)=>{
                 tstr += ' AND ';
             }
         }
-        let sqlstr=`SELECT * FROM dish2 WHERE (${zstr}) OR (${fstr}) OR (${tstr})`;
+        let sqlstr=`SELECT * FROM dish2 WHERE (${zstr}) OR (${fstr}) OR (${tstr}) LIMIT ${limit},${offset}`;
         console.log(sqlstr);
         sql.query(sqlstr,(err,data)=>{
             if (err){

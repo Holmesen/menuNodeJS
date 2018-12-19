@@ -115,21 +115,26 @@ router.get('/un_collect_dish',(req,res)=>{
 router.get('/dish_info',(req,res)=>{
     if ((req.url).indexOf('?')!=-1){
         let getData=myUrl.parse(req.url,true);
-        sql.query(`SELECT * FROM dish2 WHERE ID=${getData.query.dishID}`,(err,data)=>{
-            if (err){
-                console.error('查找菜品出错！',err);
-                res.status(500).send({success:false,msg:'查找菜品出错!',data:data}).end();
-            }else {
-                addView(getData.query.dishID);
-                // console.log(data[0].user_id);
-                sql.query(`SELECT name,avatar_url FROM user WHERE ID=${data[0].user_id}`,(err,data2)=>{
-                    if (err){
-                        console.error(err);
-                    }
-                    res.status(200).send({success:true,msg:'查找到菜品!',data:data,avatar:data2}).end();
-                })
-            }
-        })
+        if(getData.query.dishID||getData.query.dishID==null||getData.query.dishID==''){
+            res.status(400).send('菜品ID不正确!').end();
+        }else {
+            sql.query(`SELECT * FROM dish2 WHERE ID=${getData.query.dishID}`,(err,data)=>{
+                if (err){
+                    console.error('查找菜品出错！',err);
+                    res.status(500).send({success:false,msg:'查找菜品出错!',data:data}).end();
+                }else {
+                    addView(getData.query.dishID);
+                    // console.log(data[0].user_id);
+                    sql.query(`SELECT name,avatar_url FROM user WHERE ID=${data[0].user_id}`,(err,data2)=>{
+                        if (err){
+                            console.error(err);
+                        }
+                        res.status(200).send({success:true,msg:'查找到菜品!',data:data,avatar:data2}).end();
+                    })
+                }
+            })
+        }
+
     }else {
         res.status(400).send('所传参数有错!').end();
     }
@@ -512,7 +517,7 @@ router.post("/upload_dish",function (req,res) {
     //res.status(200).send('上传步骤成功！').end();
     sql.query(`INSERT INTO dish2(name,user_id,user_name,img_src,menu,cuisine,description,taste,process,
     ingredients,excipient,seasoning,practice,features,date,time1,time2,difficult,component)
-     VALUES('${postData.baseInfo.dishName}',3,'Holmesen','${postData.baseInfo.mainPic}',
+     VALUES('${postData.baseInfo.dishName}',${postData.user.id},'${postData.user.name}','${postData.baseInfo.mainPic}',
      '${postData.baseInfo.menu}','${postData.baseInfo.cuisine}','${postData.baseInfo.description}'
      ,'${postData.baseInfo.taste}','${postData.baseInfo.process}','${JSON.stringify(postData.shicai.zhuliaoNameList)}'
      ,'${JSON.stringify(postData.shicai.fuliaoNameList)}','${JSON.stringify(postData.shicai.tiaoliaoNameList)}'
