@@ -179,7 +179,7 @@ router.get('/get_user_collect',(req,res)=>{
 router.get('/get_user_upload',(req,res)=>{
     if ((req.url).indexOf('?')!=-1){
         let getData=myUrl.parse(req.url,true).query;
-        if (getData.userID!=null&&getData.userID!=''){
+        if (!!getData.userID){
             let limit=getData.limit||0;
             let offset=getData.offset||20;
             //let userUpload=getUserUpload(getData.query.userID,getData.query.limit,getData.query.offset);

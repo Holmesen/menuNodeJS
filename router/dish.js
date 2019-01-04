@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Created by 13156 on 2018/10/23.
  */
 const express=require('express');
@@ -115,7 +115,7 @@ router.get('/un_collect_dish',(req,res)=>{
 router.get('/dish_info',(req,res)=>{
     if ((req.url).indexOf('?')!=-1){
         let getData=myUrl.parse(req.url,true);
-        if(getData.query.dishID||getData.query.dishID==null||getData.query.dishID==''){
+        if(!getData.query.dishID||getData.query.dishID==null||getData.query.dishID==''){
             res.status(400).send('菜品ID不正确!').end();
         }else {
             sql.query(`SELECT * FROM dish2 WHERE ID=${getData.query.dishID}`,(err,data)=>{
@@ -329,16 +329,16 @@ router.get('/dish_like',(req,res)=>{
  */
 router.get('/same_menu_cuisine',(req,res)=>{
     let getData=(myUrl.parse(req.url,true)).query;
-    let menu=getData.menu;
-    let cuisine=getData.cuisine;
+    let menu=getData.menu=='菜系'?'':getData.menu;
+    let cuisine=getData.cuisine=='类别'?'':getData.cuisine;
     let limit=getData.limit||0;
     let offset=getData.offset||20;
     let sqlstr='';
-    if (cuisine)
+    if (cuisine && cuisine!='')
         sqlstr=`SELECT * FROM dish2 WHERE cuisine='${cuisine}' LIMIT ${limit},${offset}`;
-    else if (menu)
+    else if (menu && menu!='')
         sqlstr=`SELECT * FROM dish2 WHERE menu='${menu}' LIMIT ${limit},${offset}`;
-        else res.status(400).send({success:false,msg:'所传参数不对!'}).end();
+        else sqlstr=`SELECT * FROM dish2 WHERE ID >= (SELECT floor(RAND() * ((SELECT MAX(ID) FROM dish2) - (SELECT MIN(ID) FROM dish2)) + (SELECT MIN(ID) FROM dish2))) ORDER BY ID LIMIT ${limit},${offset}`;
     sql.query(sqlstr,(err,data)=>{
         if (err){
             console.error(err);
