@@ -26,7 +26,7 @@ router.get('/operate',(req,res)=>{
     let userID=getData.userID;
     let type=getData.type||'';
     let str='';
-    if (userID && userID!=''){
+    if (!!userID){
         if (type!=''){
             str=`SELECT * FROM operate WHERE userID=${userID} AND operate='${type}'`;
         }else {
@@ -50,27 +50,37 @@ router.get('/add_history',(req,res)=>{
     let getData=(myUrl.parse(req.url,true)).query;
     let userID=getData.userID;
     let key=getData.key;
-    sql.query(`INSERT INTO operate(userID,operate,_key,date) VALUES(${userID},'history','${key}','${common.getDate()}')`,err=>{
-        if (err){
-            console.error(err);
-            res.status(500).send({success:false,msg:'添加搜索历史失败!'}).end();
-        }else {
-            res.status(200).send({success:true,msg:'添加搜索历史成功!'}).end();
-        }
-    })
+    if(!!userID){
+        sql.query(`INSERT INTO operate(userID,operate,_key,date) VALUES(${userID},'history','${key}','${common.getDate()}')`,err=>{
+            if (err){
+                console.error(err);
+                res.status(500).send({success:false,msg:'添加搜索历史失败!'}).end();
+            }else {
+                res.status(200).send({success:true,msg:'添加搜索历史成功!'}).end();
+            }
+        })
+    }else {
+        res.status(400).send({success:false,msg:'添加搜索历史失败!'}).end();
+    }
+
 });
 
 router.get('/get_history',(req,res)=>{
     let getData=(myUrl.parse(req.url,true)).query;
     let userID=getData.userID;
-    sql.query(`SELECT * FROM operate WHERE userID=${userID} AND operate='history'`,(err,data)=>{
-        if (err){
-            console.error(err);
-            res.status(500).send({success:false,msg:'查找搜索历史失败!'}).end();
-        }else {
-            res.status(200).send({success:true,msg:'查找搜索历史成功!',data:data}).end();
-        }
-    })
+    if (!!userID){
+        sql.query(`SELECT * FROM operate WHERE userID=${userID} AND operate='history'`,(err,data)=>{
+            if (err){
+                console.error(err);
+                res.status(500).send({success:false,msg:'查找搜索历史失败!'}).end();
+            }else {
+                res.status(200).send({success:true,msg:'查找搜索历史成功!',data:data}).end();
+            }
+        })
+    }else {
+        res.status(400).send({success:false,msg:'查找搜索历史失败!'}).end();
+    }
+
 });
 
 router.get('/clear_history',(req,res)=>{
@@ -96,21 +106,26 @@ router.get('/collect_dish',(req,res)=>{
     let userID=getData.userID;
     let avatarID=getData.avatarID;
     let date=common.getDate();
-    sql.query(`UPDATE dish2 SET collection=collection+1 WHERE ID=${dishID}`,err=>{
-        if (err){
-            console.error(err);
-            res.status(500).send({success:false,msg:'菜品点收藏失败!'}).end();
-        }else {
-            sql.query(`INSERT INTO operate(userID,dishID,avatarID,operate,date) VALUES(${userID},${dishID},${avatarID},'collection','${date}')`,err=>{
-                if (err){
-                    console.error(err);
-                    res.status(500).send({success:false,msg:'菜品添加收藏失败!'}).end();
-                }else {
-                    res.status(200).send({success:true,msg:'菜品添加收藏成功!'}).end();
-                }
-            });
-        }
-    })
+    if (!!dishID && !!userID){
+        sql.query(`UPDATE dish2 SET collection=collection+1 WHERE ID=${dishID}`,err=>{
+            if (err){
+                console.error(err);
+                res.status(500).send({success:false,msg:'菜品点收藏失败!'}).end();
+            }else {
+                sql.query(`INSERT INTO operate(userID,dishID,avatarID,operate,date) VALUES(${userID},${dishID},${avatarID},'collection','${date}')`,err=>{
+                    if (err){
+                        console.error(err);
+                        res.status(500).send({success:false,msg:'菜品添加收藏失败!'}).end();
+                    }else {
+                        res.status(200).send({success:true,msg:'菜品添加收藏成功!'}).end();
+                    }
+                });
+            }
+        })
+    }else {
+        res.status(400).send({success:false,msg:'菜品添加收藏失败!'}).end();
+    }
+
     // let postData=req.body;
     // if (postData.userID!=null&&postData.userID!=''){
     //     sql.query(`SELECT COUNT(*) FROM collection WHERE user_ID=${postData.userID} AND dish_ID=${postData.dishID}`,(err,data)=>{
@@ -144,21 +159,26 @@ router.get('/collect_dish',(req,res)=>{
 router.get('/un_collect_dish',(req,res)=>{
     let getData=(myUrl.parse(req.url,true)).query;
     let dishID=getData.dishID;
-    sql.query(`UPDATE dish2 SET collection=collection-1 WHERE ID=${dishID}`,err=>{
-        if (err){
-            console.error(err);
-            res.status(500).send({success:false,msg:'菜品取消收藏失败!'}).end();
-        }else {
-            sql.query(`DELETE FROM operate WHERE dishID=${dishID} AND operate='collection'`,err=>{
-                if (err){
-                    console.error(err);
-                    res.status(500).send({success:false,msg:'菜品取消收藏失败!'}).end();
-                }else {
-                    res.status(200).send({success:true,msg:'菜品取消收藏成功!'}).end();
-                }
-            });
-        }
-    })
+    if(!!dishID){
+        sql.query(`UPDATE dish2 SET collection=collection-1 WHERE ID=${dishID}`,err=>{
+            if (err){
+                console.error(err);
+                res.status(500).send({success:false,msg:'菜品取消收藏失败!'}).end();
+            }else {
+                sql.query(`DELETE FROM operate WHERE dishID=${dishID} AND operate='collection'`,err=>{
+                    if (err){
+                        console.error(err);
+                        res.status(500).send({success:false,msg:'菜品取消收藏失败!'}).end();
+                    }else {
+                        res.status(200).send({success:true,msg:'菜品取消收藏成功!'}).end();
+                    }
+                });
+            }
+        })
+    }else {
+        res.status(400).send({success:false,msg:'菜品取消收藏失败!'}).end();
+    }
+
 });
 
 /**
@@ -171,41 +191,46 @@ router.get('/like',(req,res)=>{
     let avatarID=getData.avatarID;
     let flag=getData.flag;
     let date=common.getDate();
-    if (flag=='false'){
-        console.log('点赞');
-        sql.query(`UPDATE dish2 SET _like=_like+1 WHERE ID=${dishID}`,err=>{
-            if (err){
-                console.error(err);
-                res.status(500).send({success:false,msg:'菜品点赞失败!'}).end();
-            }else {
-                sql.query(`INSERT INTO operate(userID,dishID,avatarID,operate,date) VALUES(${userID},${dishID},${avatarID},'like','${date}')`,err=>{
-                    if (err){
-                        console.error(err);
-                        res.status(500).send({success:false,msg:'菜品添加赞失败!'}).end();
-                    }else {
-                        res.status(200).send({success:true,msg:'菜品添加赞成功!'}).end();
-                    }
-                });
-            }
-        })
+    if (!!dishID && !!userID){
+        if (flag=='false'){
+            console.log('点赞');
+            sql.query(`UPDATE dish2 SET _like=_like+1 WHERE ID=${dishID}`,err=>{
+                if (err){
+                    console.error(err);
+                    res.status(500).send({success:false,msg:'菜品点赞失败!'}).end();
+                }else {
+                    sql.query(`INSERT INTO operate(userID,dishID,avatarID,operate,date) VALUES(${userID},${dishID},${avatarID},'like','${date}')`,err=>{
+                        if (err){
+                            console.error(err);
+                            res.status(500).send({success:false,msg:'菜品添加赞失败!'}).end();
+                        }else {
+                            res.status(200).send({success:true,msg:'菜品添加赞成功!'}).end();
+                        }
+                    });
+                }
+            })
+        }else {
+            console.log('取消点赞');
+            sql.query(`UPDATE dish2 SET _like=_like-1 WHERE ID=${dishID}`,err=>{
+                if (err){
+                    console.error(err);
+                    res.status(500).send({success:false,msg:'菜品取消赞失败!'}).end();
+                }else {
+                    sql.query(`DELETE FROM operate WHERE dishID=${dishID} AND operate='like'`,err=>{
+                        if (err){
+                            console.error(err);
+                            res.status(500).send({success:false,msg:'菜品取消赞失败!'}).end();
+                        }else {
+                            res.status(200).send({success:true,msg:'菜品取消赞成功!'}).end();
+                        }
+                    });
+                }
+            })
+        }
     }else {
-        console.log('取消点赞');
-        sql.query(`UPDATE dish2 SET _like=_like-1 WHERE ID=${dishID}`,err=>{
-            if (err){
-                console.error(err);
-                res.status(500).send({success:false,msg:'菜品取消赞失败!'}).end();
-            }else {
-                sql.query(`DELETE FROM operate WHERE dishID=${dishID} AND operate='like'`,err=>{
-                    if (err){
-                        console.error(err);
-                        res.status(500).send({success:false,msg:'菜品取消赞失败!'}).end();
-                    }else {
-                        res.status(200).send({success:true,msg:'菜品取消赞成功!'}).end();
-                    }
-                });
-            }
-        })
+        res.status(400).send({success:false,msg:'操作失败！'}).end();
     }
+
 });
 
 /**
@@ -218,41 +243,46 @@ router.get('/unlike',(req,res)=>{
     let avatarID=getData.avatarID;
     let flag=getData.flag;
     let date=common.getDate();
-    if (flag=='false'){
-        console.log('点踩');
-        sql.query(`UPDATE dish2 SET unlike=unlike+1 WHERE ID=${dishID}`,err=>{
-            if (err){
-                console.error(err);
-                res.status(500).send({success:false,msg:'菜品点踩失败!'}).end();
-            }else {
-                sql.query(`INSERT INTO operate(userID,dishID,avatarID,operate,date) VALUES(${userID},${dishID},${avatarID},'unlike','${date}')`,err=>{
-                    if (err){
-                        console.error(err);
-                        res.status(500).send({success:false,msg:'菜品添加踩失败!'}).end();
-                    }else {
-                        res.status(200).send({success:true,msg:'菜品添加踩成功!'}).end();
-                    }
-                });
-            }
-        })
+    if (!!dishID && !!userID){
+        if (flag=='false'){
+            console.log('点踩');
+            sql.query(`UPDATE dish2 SET unlike=unlike+1 WHERE ID=${dishID}`,err=>{
+                if (err){
+                    console.error(err);
+                    res.status(500).send({success:false,msg:'菜品点踩失败!'}).end();
+                }else {
+                    sql.query(`INSERT INTO operate(userID,dishID,avatarID,operate,date) VALUES(${userID},${dishID},${avatarID},'unlike','${date}')`,err=>{
+                        if (err){
+                            console.error(err);
+                            res.status(500).send({success:false,msg:'菜品添加踩失败!'}).end();
+                        }else {
+                            res.status(200).send({success:true,msg:'菜品添加踩成功!'}).end();
+                        }
+                    });
+                }
+            })
+        }else {
+            console.log('取消点踩');
+            sql.query(`UPDATE dish2 SET unlike=unlike-1 WHERE ID=${dishID}`,err=>{
+                if (err){
+                    console.error(err);
+                    res.status(500).send({success:false,msg:'菜品取消踩失败!'}).end();
+                }else {
+                    sql.query(`DELETE FROM operate WHERE dishID=${dishID} AND operate='unlike'`,err=>{
+                        if (err){
+                            console.error(err);
+                            res.status(500).send({success:false,msg:'菜品取消踩失败!'}).end();
+                        }else {
+                            res.status(200).send({success:true,msg:'菜品取消踩成功!'}).end();
+                        }
+                    });
+                }
+            })
+        }
     }else {
-        console.log('取消点踩');
-        sql.query(`UPDATE dish2 SET unlike=unlike-1 WHERE ID=${dishID}`,err=>{
-            if (err){
-                console.error(err);
-                res.status(500).send({success:false,msg:'菜品取消踩失败!'}).end();
-            }else {
-                sql.query(`DELETE FROM operate WHERE dishID=${dishID} AND operate='unlike'`,err=>{
-                    if (err){
-                        console.error(err);
-                        res.status(500).send({success:false,msg:'菜品取消踩失败!'}).end();
-                    }else {
-                        res.status(200).send({success:true,msg:'菜品取消踩成功!'}).end();
-                    }
-                });
-            }
-        })
+        res.status(400).send({success:false,msg:'操作失败！'}).end();
     }
+
 });
 
 module.exports=router;
