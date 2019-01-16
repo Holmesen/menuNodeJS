@@ -19,14 +19,14 @@ const options = {
     cert: fs.readFileSync('Nginx/1_www.holmesen.club_bundle.crt')
 };
 var server=express();
-/*var httpServer=http.createServer(server);
+var httpServer=http.createServer(server);
 var httpsServer=https.createServer(options, server);
 httpServer.listen(3000,function () {
     console.log('http server is running...');
 });
 httpsServer.listen(3001,function () {
     console.log('https server is running...');
-});*/
+});
 /*做https处理↑↑↑*/
 
 const _user=require('./router/user');
@@ -80,4 +80,4 @@ server.use('/ingredients',_ingredients);
 server.use('/operate',_operate);
 server.use('/fileoperate',_fileOperate);
 
-server.listen(3000);
+//server.listen(3000);

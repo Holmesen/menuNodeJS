@@ -84,29 +84,38 @@ router.get('/login',(req,res)=>{
                                     console.error('用户添加失败：',error);
                                     res.status(200).send({success:false,msg:'用户添加失败！'}).end();
                                 }else {
-                                    sql.query(`SELECT * FROM operate WHERE userID=(SELECT ID FROM user WHERE openID='${result.openid}')`,(err,data)=>{
-                                        if (err){
-                                            console.error(err);
-                                        }
-                                        sql.query(`SELECT * FROM user WHERE openID='${result.openid}'`,(error,data2)=> {
-                                            if (error) {
-                                                console.error('数据库出错：', error);
-                                                //res.status(500).send({success: false, msg: '数据库出错！', data: data2}).end();
+                                    if(!!result.openid){
+                                        sql.query(`SELECT * FROM operate WHERE userID=(SELECT ID FROM user WHERE openID='${result.openid}')`,(err,data)=>{
+                                            if (err){
+                                                console.error('添加用户失败：',err);
                                             }
-                                            res.status(200).send({success:true,msg:'用户添加成功！',type:'new',data:{info:data2,operate:data}}).end();
-                                        });
+                                            sql.query(`SELECT * FROM user WHERE openID='${result.openid}'`,(error,data2)=> {
+                                                if (error) {
+                                                    console.error('数据库出错：', error);
+                                                    //res.status(500).send({success: false, msg: '数据库出错！', data: data2}).end();
+                                                }
+                                                res.status(200).send({success:true,msg:'用户添加成功！',type:'new',data:{info:data2,operate:data}}).end();
+                                            });
 
-                                    });
+                                        });
+                                    }else {
+                                        res.status(400).send({success:false,msg:'登陆失败'}).end();
+                                    }
                                     //res.status(200).send({success:true,msg:'用户添加成功！',type:'new'}).end();
                                 }
                             })
                         }else {
-                            sql.query(`SELECT * FROM operate WHERE userID=${_data[0].ID}`,(err,data)=>{
-                                if (err){
-                                    console.error(err);
-                                }
-                                res.status(200).send({success:true,msg:'登录成功！',type:'old',data:{info:_data,operate:data}}).end();
-                            });
+                            if(!!_data[0].ID){
+                                sql.query(`SELECT * FROM operate WHERE userID=${_data[0].ID}`,(err,data)=>{
+                                    if (err){
+                                        console.error('老用户登陆失败：',err);
+                                    }
+                                    res.status(200).send({success:true,msg:'登录成功！',type:'old',data:{info:_data,operate:data}}).end();
+                                });
+                            }else {
+                                res.status(400).send({success:false,msg:'登陆失败'}).end();
+                            }
+
                         }
                     }
                 });
@@ -152,7 +161,7 @@ router.post('/updateinfo',(req,res)=>{
 router.get('/get_user_collect',(req,res)=>{
     if ((req.url).indexOf('?')!=-1){
         let getData=myUrl.parse(req.url,true).query;
-        if (getData.userID!=null&&getData.userID!=''){
+        if (!!getData.userID){
             let limit=getData.limit||0;
             let offset=getData.offset||20;
             // let collect=getUserCollect(getData.query.userID,getData.query.limit,getData.query.offset);
@@ -206,7 +215,7 @@ router.get('/get_user_upload',(req,res)=>{
 router.get('/user_info',(req,res)=>{
     if ((req.url).indexOf('?')!=-1) {
         let getData = myUrl.parse(req.url, true).query;
-        if (getData.userID != null && getData.userID != '') {
+        if (!!getData.userID) {
             //let userInfo=getUserInfo(getData.query.userID);
             sql.query(`SELECT * FROM user WHERE ID=${getData.userID}`,(err,data)=>{
                 if (err){
